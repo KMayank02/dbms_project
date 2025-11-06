@@ -27,16 +27,15 @@ router.put("/add-to-cart", async (req, res) => {
   }
 });
 
-router.put("/remove-from-cart", async (req, res) => {
+router.put("/remove-from-cart/:game_id", async (req, res) => {
   try {
-    const { game_id, id } = req.headers;
+    const { id } = req.headers;
+    const { game_id } = req.params;
 
-    const user = await User.findById(id);
-    const in_cart = await user.cart.includes(game_id);
+    // const user = await User.findById(id);
+    // const in_cart = await user.cart.includes(game_id);
 
-    if (in_cart) {
-      await User.findByIdAndUpdate(id, { $pull: { cart: game_id } });
-    }
+    await User.findByIdAndUpdate(id, { $pull: { cart: game_id } });
 
     return res.status(200).json({
       status: "success",

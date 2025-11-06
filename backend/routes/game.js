@@ -89,7 +89,7 @@ router.get("/recent-games", async (req, res) => {
   }
 });
 
-router.get("/get-book-by-id/:id", async (req, res) => {
+router.get("/get-game-by-id/:id", async (req, res) => {
   try {
     const {id} = req.params;
     const game = await Game.findById(id);

@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
-app.use(express.json());
 require("dotenv").config();
 require("./connections/connection");
+const cors = require('cors');
+app.use(cors());
+app.use(express.json());
 
 const User = require("./routes/user");
 const Game = require("./routes/game");

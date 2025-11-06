@@ -56,7 +56,7 @@ router.get("/fetch-orders", async (req, res) => {
   try {
     const orders = await Order.find()
       .populate({
-        path: "orders",
+        path: "game",
       })
       .populate({
         path: "user",
